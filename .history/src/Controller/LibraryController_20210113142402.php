@@ -5,8 +5,6 @@ namespace App\Controller;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use App\Entity\Book;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -51,12 +49,6 @@ class LibraryController extends AbstractController
             ]
         ]);
         return $response;
-    }
-
-    public function createBook(Request $request, EntityManagerInterface $em) //Symfony usa interfaces para asi podemos cambiar de servicio doctrine con mayor facilidad, en vez de estar haciendo una clase por cada servicio
-    {
-        $book = new Book();  //Book es una entidad pero para yo poder insertarla en la base de datos tengo que acudir a un servicio doctrine  llamado EntityManager.
-        $book->setTitle('Hacia rutas salvajes');
     }
 }
 
